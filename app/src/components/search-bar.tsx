@@ -5,6 +5,7 @@ import { Button, Form, FormControl, FormField, FormItem, Input } from './ui';
 import { Search } from 'lucide-react';
 import { useEffect } from 'react';
 import { toast } from 'sonner';
+import { DialectNotificationComponent } from './dialect-notification-component';
 
 export default function SearchBar({
   joinChatroom,
@@ -22,38 +23,41 @@ export default function SearchBar({
   }, [searchForm.formState.errors.chatroom]);
 
   return (
-    <Form {...searchForm}>
-      <form
-        className="flex w-full gap-x-2 sm:ml-auto sm:w-auto"
-        onSubmit={searchForm.handleSubmit(joinChatroom)}
-      >
-        <FormField
-          control={searchForm.control}
-          name="chatroom"
-          render={({ field }) => (
-            <FormItem className="w-full sm:w-[200px]">
-              <FormControl>
-                <Input
-                  placeholder="Enter chatroom address"
-                  {...field}
-                  disabled={searchForm.formState.isSubmitting}
-                  className={
-                    searchForm.formState.errors.chatroom && 'border-destructive'
-                  }
-                />
-              </FormControl>
-            </FormItem>
-          )}
-        />
-        <Button
-          className="btn"
-          size={'icon'}
-          type="submit"
-          disabled={searchForm.formState.isSubmitting}
+    <>
+      <Form {...searchForm}>
+        <form
+          className="flex w-full gap-x-2 sm:ml-auto sm:w-auto"
+          onSubmit={searchForm.handleSubmit(joinChatroom)}
         >
-          <Search size={20} />
-        </Button>
-      </form>
-    </Form>
+          <FormField
+            control={searchForm.control}
+            name="chatroom"
+            render={({ field }) => (
+              <FormItem className="w-full sm:w-[200px]">
+                <FormControl>
+                  <Input
+                    placeholder="Enter chatroom address"
+                    {...field}
+                    disabled={searchForm.formState.isSubmitting}
+                    className={
+                      searchForm.formState.errors.chatroom && 'border-destructive'
+                    }
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <Button
+            className="btn"
+            size={'icon'}
+            type="submit"
+            disabled={searchForm.formState.isSubmitting}
+          >
+            <Search size={20} />
+          </Button>
+        </form>
+      </Form>
+      <DialectNotificationComponent />
+    </>
   );
 }
