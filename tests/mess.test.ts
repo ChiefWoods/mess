@@ -52,13 +52,14 @@ describe('mess', () => {
     await program.methods
       .init()
       .accounts({
-        payer: context.payer.publicKey,
+        authority: context.payer.publicKey,
       })
       .signers([context.payer])
       .rpc();
 
     const chat = await program.account.chat.fetch(chatPDA);
 
+    expect(chat.authority).toStrictEqual(context.payer.publicKey);
     expect(chat.messages).toEqual([]);
   });
 

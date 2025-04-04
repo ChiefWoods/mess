@@ -33,11 +33,11 @@ export function useAnchorProgram() {
     );
   }, [connection, wallet]);
 
-  async function getInitIx(payer: PublicKey): Promise<TransactionInstruction> {
+  async function getInitIx(authority: PublicKey): Promise<TransactionInstruction> {
     return await program.methods
       .init()
       .accounts({
-        payer,
+        authority,
       })
       .instruction();
   }
@@ -50,8 +50,8 @@ export function useAnchorProgram() {
     return await program.methods
       .send(text)
       .accounts({
-        chat: chatPda!,
         sender,
+        chat: chatPda,
       })
       .instruction();
   }

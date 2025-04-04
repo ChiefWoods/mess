@@ -6,7 +6,12 @@ declare_id!("MESSWwDyEZF9D63ktc12VGEGA6huravzPNJj9gjYFqq");
 pub mod mess {
     use super::*;
 
-    pub fn init(_ctx: Context<Init>) -> Result<()> {
+    pub fn init(ctx: Context<Init>) -> Result<()> {
+        ctx.accounts.chat.set_inner(Chat {
+            authority: ctx.accounts.authority.key(),
+            messages: Vec::new(),
+        });
+
         Ok(())
     }
 
@@ -15,7 +20,7 @@ pub mod mess {
         require!(!text.is_empty(), MessError::TextEmpty);
 
         ctx.accounts.chat.messages.push(Message {
-            sender: *ctx.accounts.sender.key,
+            sender: ctx.accounts.sender.key(),
             text,
         });
 
@@ -26,12 +31,12 @@ pub mod mess {
 #[derive(Accounts)]
 pub struct Init<'info> {
     #[account(mut)]
-    pub payer: Signer<'info>,
+    pub authority: Signer<'info>,
     #[account(
         init,
-        payer = payer,
+        payer = authority,
         space = Chat::DISCRIMINATOR.len() + Chat::MIN_SPACE,
-        seeds = [b"global", payer.key.as_ref()],
+        seeds = [CHAT_SEED, authority.key.as_ref()],
         bump,
     )]
     pub chat: Account<'info, Chat>,
@@ -55,11 +60,12 @@ pub struct Send<'info> {
 
 #[account]
 pub struct Chat {
+    pub authority: Pubkey,      // 32
     pub messages: Vec<Message>, // 4
 }
 
 impl Chat {
-    pub const MIN_SPACE: usize = 4;
+    pub const MIN_SPACE: usize = 32 + 4;
 }
 
 #[derive(AnchorSerialize, AnchorDeserialize, Clone)]
@@ -71,6 +77,9 @@ pub struct Message {
 impl Message {
     pub const MIN_SPACE: usize = 32 + 4;
 }
+
+#[constant]
+pub const CHAT_SEED: &[u8] = b"global";
 
 #[error_code]
 pub enum MessError {
