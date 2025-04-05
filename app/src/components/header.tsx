@@ -12,6 +12,7 @@ import { getChatPda } from '@/lib/pda';
 import SearchBar from './search-bar';
 import ModeToggle from './mode-toggle';
 import { useChat } from './chat-provider';
+import { DialectNotificationComponent } from './dialect-notification-component';
 
 export default function Header() {
   const { publicKey, connected } = useWallet();
@@ -106,6 +107,7 @@ export default function Header() {
         ))}
       {!isSearchExpanded && (
         <>
+          <DialectNotificationComponent />
           <ModeToggle />
           <WalletMultiButton />
         </>
