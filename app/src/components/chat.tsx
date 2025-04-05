@@ -33,6 +33,7 @@ import TransactionToast from './transaction-toast';
 import Text from './text';
 import Spinner from './spinner';
 import { useChat } from './chat-provider';
+import { notifyChatOwner } from '@/lib/dialect';
 
 export default function Chat() {
   const { publicKey, connecting, connected, sendTransaction } = useWallet();
@@ -95,10 +96,12 @@ export default function Chat() {
   }
 
   async function sendMessage(values: z.infer<typeof messageFormSchema>) {
-    if (chatPda && publicKey) {
+    if (chatPda && chatAcc && publicKey) {
+      const message = values.message.trim();
+
       try {
         const tx = await buildTx(
-          [await getSendIx(values.message.trim(), chatPda, publicKey)],
+          [await getSendIx(message, chatPda, publicKey)],
           publicKey
         );
 
@@ -109,6 +112,10 @@ export default function Chat() {
         mutate();
         messageForm.reset();
         messageForm.setFocus('message');
+
+        if (!publicKey.equals(chatAcc.authority)) {
+          notifyChatOwner(publicKey.toBase58(), message, chatAcc.authority.toBase58());
+        }
       } catch (err) {
         const error = err as Error;
         console.error(error);
