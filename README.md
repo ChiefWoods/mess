@@ -6,7 +6,7 @@ Messaging dApp for Solana Curriculum in [freeCodeCampWeb3](https://web3.freecode
 
 [Live Website](https://chiefwoods.github.io/mess/)
 
-[Program on Solana Explorer](https://explorer.solana.com/address/MESSWwDyEZF9D63ktc12VGEGA6huravzPNJj9gjYFqq?cluster=devnet)
+[Program on Solana Explorer](https://explorer.solana.com/address/MESS6sYCuTxwEZsF8M6zrkBdUd4oNvqWCdyBTx6KFNo?cluster=devnet)
 
 [Source Repository](https://github.com/ChiefWoods/mess)
 
@@ -24,6 +24,7 @@ Messaging dApp for Solana Curriculum in [freeCodeCampWeb3](https://web3.freecode
 - [anchor-bankrun](https://kevinheavey.github.io/solana-bankrun/)
 - [@solana/web3.js](https://solana-labs.github.io/solana-web3.js/)
 - [@solana/wallet-adapter-react](https://github.com/anza-xyz/wallet-adapter)
+- [@dialectlabs/sdk](https://www.dialect.to/)
 - [@coral-xyz/anchor](https://www.anchor-lang.com/)
 - [shadcn/ui](https://ui.shadcn.com/)
 - [Zod](https://zod.dev/)
@@ -40,12 +41,12 @@ Messaging dApp for Solana Curriculum in [freeCodeCampWeb3](https://web3.freecode
 
 ### Prerequisites
 
-1. Update your Solana CLI, Bun toolkit and avm to the latest version
+1. Update your Solana CLI, Bun toolkit and avm version
 
 ```bash
-solana-install update
+agave-install init 2.1.0
 bun upgrade
-avm update
+avm use 0.31.0
 ```
 
 ### Setup
@@ -104,20 +105,13 @@ anchor build
 bun test
 ```
 
-10. Deploy the program to devnet
+10. In the `app` directory, set up `.env` values
 
 ```bash
-anchor deploy
+cp .env.example .env.development
 ```
 
-11. In the `app` directory, create a `.env` file and set its contents
-
-```
-VITE_RPC_URL=
-VITE_RPC_CLUSTER=
-```
-
-12. Start development server
+11. Start development server
 
 ```bash
 bun run dev
@@ -137,6 +131,7 @@ View the [open issues](https://github.com/ChiefWoods/mess/issues) for a full lis
 
 - [GitHub Pages](https://pages.github.com/)
 - [Helius](https://www.helius.dev/)
+- [Dialect](https://www.dialect.to/)
 
 ## Contact
 
