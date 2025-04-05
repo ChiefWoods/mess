@@ -5,7 +5,7 @@
  * IDL can be found at `target/idl/mess.json`.
  */
 export type Mess = {
-  "address": "MESSWwDyEZF9D63ktc12VGEGA6huravzPNJj9gjYFqq",
+  "address": "MESS6sYCuTxwEZsF8M6zrkBdUd4oNvqWCdyBTx6KFNo",
   "metadata": {
     "name": "mess",
     "version": "0.1.0",

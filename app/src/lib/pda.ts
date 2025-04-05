@@ -1,9 +1,9 @@
 import { PublicKey } from '@solana/web3.js';
-import idl from '@/idl/mess.json';
+import { MESS_PROGRAM_ID } from './constants';
 
 export function getChatPda(owner: PublicKey): PublicKey {
   return PublicKey.findProgramAddressSync(
     [Buffer.from('global'), owner.toBuffer()],
-    new PublicKey(idl.address)
+    MESS_PROGRAM_ID
   )[0];
 }

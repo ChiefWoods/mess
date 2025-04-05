@@ -4,14 +4,13 @@ import { NotificationsButton } from '@dialectlabs/react-ui';
 import { Button } from './ui';
 import { Bell } from 'lucide-react';
 import { useTheme } from './theme-provider';
-
-const DAPP_ADDRESS = 'MESS6sYCuTxwEZsF8M6zrkBdUd4oNvqWCdyBTx6KFNo';
+import { MESS_PROGRAM_ID } from '@/lib/constants';
 
 export const DialectNotificationComponent = () => {
   const { theme } = useTheme();
 
   return (
-    <DialectSolanaSdk dappAddress={DAPP_ADDRESS}>
+    <DialectSolanaSdk dappAddress={MESS_PROGRAM_ID.toBase58()}>
       <NotificationsButton theme={theme === 'system' ? 'dark' : theme}>
         {({ setOpen, unreadCount, ref }) => {
           return (

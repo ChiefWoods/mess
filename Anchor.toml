@@ -7,7 +7,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-mess = "MESSWwDyEZF9D63ktc12VGEGA6huravzPNJj9gjYFqq"
+mess = "MESS6sYCuTxwEZsF8M6zrkBdUd4oNvqWCdyBTx6KFNo"
 
 [registry]
 url = "https://api.apr.dev"
