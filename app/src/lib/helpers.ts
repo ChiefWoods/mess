@@ -45,7 +45,7 @@ export async function buildTx(ixs: TransactionInstruction[], payer: PublicKey) {
       units: Math.ceil(units * 1.1),
     }),
     ComputeBudgetProgram.setComputeUnitPrice({
-      microLamports: priorityFee,
+      microLamports: isNaN(priorityFee) ? 0 : priorityFee,
     }),
     ...ixs,
   ];
