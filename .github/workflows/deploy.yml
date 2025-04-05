@@ -26,6 +26,9 @@ jobs:
         env:
           VITE_RPC_URL: ${{ secrets.VITE_RPC_URL }}
           VITE_RPC_CLUSTER: ${{ secrets.VITE_RPC_CLUSTER }}
+          VITE_ADDRESS_LOOKUP_TABLE: ${{ secrets.VITE_ADDRESS_LOOKUP_TABLE }}
+          VITE_MESS_PROGRAM_ID: ${{ secrets.VITE_MESS_PROGRAM_ID }}
+          DIALECT_SDK_CREDENTIALS: ${{ secrets.DIALECT_SDK_CREDENTIALS }}
         run: bun run build
 
       - name: Deploy to GitHub Pages
