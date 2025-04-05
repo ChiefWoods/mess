@@ -4,11 +4,11 @@
 
 Messaging dApp for Solana Curriculum in [freeCodeCampWeb3](https://web3.freecodecamp.org/).
 
-[Live Website](https://chiefwoods.github.io/client-side-app/)
+[Live Website](https://chiefwoods.github.io/mess/)
 
 [Program on Solana Explorer](https://explorer.solana.com/address/MESSWwDyEZF9D63ktc12VGEGA6huravzPNJj9gjYFqq?cluster=devnet)
 
-[Source Repository](https://github.com/ChiefWoods/client-side-app)
+[Source Repository](https://github.com/ChiefWoods/mess)
 
 ## Built With
 
@@ -53,7 +53,7 @@ avm update
 1. Clone the repository
 
 ```bash
-git clone https://github.com/ChiefWoods/client-side-app.git
+git clone https://github.com/ChiefWoods/mess.git
 ```
 
 2. Install all dependencies
@@ -125,7 +125,7 @@ bun run dev
 
 ## Issues
 
-View the [open issues](https://github.com/ChiefWoods/client-side-app/issues) for a full list of proposed features and known bugs.
+View the [open issues](https://github.com/ChiefWoods/mess/issues) for a full list of proposed features and known bugs.
 
 ## Acknowledgements
 
