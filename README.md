@@ -20,9 +20,9 @@ Messaging dApp for Solana Curriculum in [freeCodeCampWeb3](https://web3.freecode
 
 ### Libraries
 
-- [solana-bankrun](https://kevinheavey.github.io/solana-bankrun/)
-- [anchor-bankrun](https://kevinheavey.github.io/solana-bankrun/)
 - [@solana/web3.js](https://solana-foundation.github.io/solana-web3.js/)
+- [litesvm](https://github.com/LiteSVM/litesvm/tree/master/crates/node-litesvm)
+- [anchor-litesvm](https://github.com/LiteSVM/anchor-litesvm/)
 - [@solana/wallet-adapter-react](https://github.com/anza-xyz/wallet-adapter)
 - [@dialectlabs/sdk](https://www.dialect.to/)
 - [@coral-xyz/anchor](https://www.anchor-lang.com/)

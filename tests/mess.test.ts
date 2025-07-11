@@ -1,82 +1,64 @@
 import { beforeAll, describe, expect, test } from 'bun:test';
-import { AnchorError, Program } from '@coral-xyz/anchor';
-import {
-  Keypair,
-  LAMPORTS_PER_SOL,
-  PublicKey,
-  SystemProgram,
-} from '@solana/web3.js';
+import { Program } from '@coral-xyz/anchor';
+import { Keypair, PublicKey } from '@solana/web3.js';
 import { Mess } from '../target/types/mess';
-import { ProgramTestContext, startAnchor } from 'solana-bankrun';
-import { BankrunProvider } from 'anchor-bankrun';
-import idl from '../target/idl/mess.json';
+import { LiteSVM } from 'litesvm';
+import { LiteSVMProvider } from 'anchor-litesvm';
+import { expectAnchorError, fundedSystemAccountInfo, getSetup } from './setup';
+import { fetchChatAcc } from './accounts';
+import { getChatPda } from './pda';
 
 describe('mess', () => {
-  let { context, provider, program } = {} as {
-    context: ProgramTestContext;
-    provider: BankrunProvider;
+  let { litesvm, provider, program } = {} as {
+    litesvm: LiteSVM;
+    provider: LiteSVMProvider;
     program: Program<Mess>;
   };
 
-  let chatPDA: PublicKey;
+  let chatPda: PublicKey;
 
-  const walletA = Keypair.generate();
+  const messager = Keypair.generate();
 
   beforeAll(async () => {
-    context = await startAnchor(
-      '',
-      [],
-      [
-        {
-          address: walletA.publicKey,
-          info: {
-            lamports: LAMPORTS_PER_SOL,
-            data: Buffer.alloc(0),
-            owner: SystemProgram.programId,
-            executable: false,
-          },
-        },
-      ]
-    );
+    ({ litesvm, provider, program } = await getSetup([
+      {
+        pubkey: messager.publicKey,
+        account: fundedSystemAccountInfo(),
+      },
+    ]));
 
-    provider = new BankrunProvider(context);
-    program = new Program(idl as Mess, provider);
-
-    [chatPDA] = PublicKey.findProgramAddressSync(
-      [Buffer.from('global'), context.payer.publicKey.toBuffer()],
-      program.programId
-    );
+    chatPda = getChatPda(provider.wallet.payer.publicKey);
   });
 
   test('initializes chat', async () => {
     await program.methods
       .init()
       .accounts({
-        authority: context.payer.publicKey,
+        authority: provider.wallet.payer.publicKey,
       })
-      .signers([context.payer])
+      .signers([provider.wallet.payer])
       .rpc();
 
-    const chat = await program.account.chat.fetch(chatPDA);
+    const chat = await fetchChatAcc(program, chatPda);
 
-    expect(chat.authority).toStrictEqual(context.payer.publicKey);
+    expect(chat.authority).toStrictEqual(provider.wallet.payer.publicKey);
     expect(chat.messages).toEqual([]);
   });
 
   test('sends message', async () => {
     const message = 'Hello world';
-    const sender = context.payer.publicKey;
+    const sender = provider.wallet.payer.publicKey;
 
     await program.methods
       .send(message)
       .accounts({
-        chat: chatPDA,
+        chat: chatPda,
         sender,
       })
-      .signers([context.payer])
+      .signers([provider.wallet.payer])
       .rpc();
 
-    const chat = await program.account.chat.fetch(chatPDA);
+    const chat = await fetchChatAcc(program, chatPda);
 
     expect(chat.messages[0].sender).toEqual(sender);
     expect(chat.messages[0].text).toEqual(message);
@@ -84,18 +66,18 @@ describe('mess', () => {
 
   test('sends message from another wallet', async () => {
     const message = 'Hey there';
-    const sender = walletA.publicKey;
+    const sender = messager.publicKey;
 
     await program.methods
       .send(message)
       .accounts({
-        chat: chatPDA,
-        sender: walletA.publicKey,
+        chat: chatPda,
+        sender: messager.publicKey,
       })
-      .signers([walletA])
+      .signers([messager])
       .rpc();
 
-    const chat = await program.account.chat.fetch(chatPDA);
+    const chat = await fetchChatAcc(program, chatPda);
 
     expect(chat.messages[1].sender).toEqual(sender);
     expect(chat.messages[1].text).toEqual(message);
@@ -108,17 +90,13 @@ describe('mess', () => {
       await program.methods
         .send(veryLongText)
         .accounts({
-          chat: chatPDA,
-          sender: context.payer.publicKey,
+          chat: chatPda,
+          sender: provider.wallet.payer.publicKey,
         })
-        .signers([context.payer])
+        .signers([provider.wallet.payer])
         .rpc();
     } catch (err) {
-      expect(err).toBeInstanceOf(AnchorError);
-
-      const { error } = err as AnchorError;
-      expect(error.errorCode.code).toEqual('TextTooLong');
-      expect(error.errorCode.number).toEqual(6000);
+      expectAnchorError(err, 'TextTooLong');
     }
   });
 
@@ -127,17 +105,13 @@ describe('mess', () => {
       await program.methods
         .send('')
         .accounts({
-          chat: chatPDA,
-          sender: context.payer.publicKey,
+          chat: chatPda,
+          sender: provider.wallet.payer.publicKey,
         })
-        .signers([context.payer])
+        .signers([provider.wallet.payer])
         .rpc();
     } catch (err) {
-      expect(err).toBeInstanceOf(AnchorError);
-
-      const { error } = err as AnchorError;
-      expect(error.errorCode.code).toEqual('TextEmpty');
-      expect(error.errorCode.number).toEqual(6001);
+      expectAnchorError(err, 'TextEmpty');
     }
   });
 });
