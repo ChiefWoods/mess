@@ -41,12 +41,12 @@ Messaging dApp for Solana Curriculum in [freeCodeCampWeb3](https://web3.freecode
 
 ### Prerequisites
 
-1. Update your Solana CLI, Bun toolkit and avm version
+1. Update your Solana CLI, avm and Bun toolkit to the latest version
 
 ```bash
 agave-install init 2.1.0
+avm use 0.31.1
 bun upgrade
-avm use 0.31.0
 ```
 
 ### Setup

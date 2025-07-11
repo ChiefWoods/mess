@@ -1,4 +1,4 @@
-use anchor_lang::{prelude::*, Discriminator};
+use anchor_lang::prelude::*;
 
 declare_id!("MESS6sYCuTxwEZsF8M6zrkBdUd4oNvqWCdyBTx6KFNo");
 
