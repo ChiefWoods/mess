@@ -22,7 +22,7 @@ Messaging dApp for Solana Curriculum in [freeCodeCampWeb3](https://web3.freecode
 
 - [solana-bankrun](https://kevinheavey.github.io/solana-bankrun/)
 - [anchor-bankrun](https://kevinheavey.github.io/solana-bankrun/)
-- [@solana/web3.js](https://solana-labs.github.io/solana-web3.js/)
+- [@solana/web3.js](https://solana-foundation.github.io/solana-web3.js/)
 - [@solana/wallet-adapter-react](https://github.com/anza-xyz/wallet-adapter)
 - [@dialectlabs/sdk](https://www.dialect.to/)
 - [@coral-xyz/anchor](https://www.anchor-lang.com/)
@@ -63,55 +63,53 @@ git clone https://github.com/ChiefWoods/mess.git
 bun i
 ```
 
-3. Generate a new keypair
-
-```bash
-solana-keygen-new -o mess-wallet.json
-```
-
-4. Set configuration to use devnet and keypair
-
-```bash
-solana config set -u l -k mess-wallet.json
-```
-
-5. Start a local validator
-
-```bash
-solana-test-validator
-```
-
-6. In another terminal, airdrop some SOL to account
-
-```bash
-solana airdrop 5
-```
-
-7. Resync your program id
+3. Resync your program id
 
 ```bash
 anchor keys sync
 ```
 
-8. Build the program
+4. Build the program
 
 ```bash
 anchor build
 ```
 
-9. Test the program
+#### Testing
+
+Run all `.test.ts` files under `/tests`.
 
 ```bash
 bun test
 ```
 
-10. In the `app` directory, set up `.env` values
+#### Deployment
+
+1. Configure to use localnet
+
+```bash
+solana config set -ul
+```
+
+2. Deploy the program
+
+```bash
+anchor deploy
+```
+
+3. Optionally initialize IDL
+
+```bash
+anchor idl init -f target/idl/stablecoin.json <PROGRAM_ID>
+```
+
+4. In the `app` directory, set up `.env` values
 
 ```bash
 cp .env.example .env.development
 ```
 
-11. Start development server
+5. Start development server
 
 ```bash
 bun run dev
