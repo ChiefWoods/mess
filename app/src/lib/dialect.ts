@@ -24,14 +24,20 @@ const sdk: DialectSdk<Solana> = Dialect.sdk(
   })
 );
 
-const dapp = await sdk.dapps.find();
+const dapp = await sdk.dapps.find().then((dapp) => {
+  if (!dapp) {
+    throw new Error('Dapp not found. Please register your app first.');
+  }
+
+  return dapp;
+});
 
 export async function notifyChatOwner(
   sender: string,
   message: string,
   owner: string
 ) {
-  await dapp?.messages.send({
+  await dapp.messages.send({
     title: `Message from ${truncateAddress(sender)}`,
     message,
     recipient: owner,
