@@ -42,7 +42,7 @@ export async function notifyChatOwner(
     message,
     recipient: owner,
     notificationTypeId: '3718b994-a613-4b4a-b243-f9e19c9e2bcf',
-    addressTypes: [AddressType.Email, AddressType.Telegram],
+    addressTypes: [AddressType.Wallet, AddressType.Email, AddressType.Telegram],
     actionsV2: {
       type: DappMessageActionType.LINK,
       links: [
