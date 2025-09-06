@@ -19,10 +19,10 @@
       "version": "0.0.0",
       "dependencies": {
         "@coral-xyz/anchor": "^0.31.1",
-        "@dialectlabs/blockchain-sdk-solana": "^1.2.1",
-        "@dialectlabs/react-sdk-blockchain-solana": "^2.1.1",
-        "@dialectlabs/react-ui": "^2.2.0",
-        "@dialectlabs/sdk": "^1.9.5",
+        "@dialectlabs/blockchain-sdk-solana": "^2.0.0-beta.4",
+        "@dialectlabs/react-sdk-blockchain-solana": "^3.0.0-beta.7",
+        "@dialectlabs/react-ui": "^3.0.0-beta.7",
+        "@dialectlabs/sdk": "^2.0.0-beta.7",
         "@hookform/resolvers": "^3.9.0",
         "@radix-ui/react-dropdown-menu": "^2.1.4",
         "@radix-ui/react-label": "^2.1.0",
@@ -321,15 +321,15 @@
 
     "@coral-xyz/borsh": ["@coral-xyz/borsh@0.31.1", "", { "dependencies": { "bn.js": "^5.1.2", "buffer-layout": "^1.2.0" }, "peerDependencies": { "@solana/web3.js": "^1.69.0" } }, "sha512-9N8AU9F0ubriKfNE3g1WF0/4dtlGXoBN/hd1PvbNBamBNwRgHxH4P+o3Zt7rSEloW1HUs6LfZEchlx9fW7POYw=="],
 
-    "@dialectlabs/blockchain-sdk-solana": ["@dialectlabs/blockchain-sdk-solana@1.2.1", "", { "dependencies": { "@solana/web3.js": "^1.95.2" }, "peerDependencies": { "@dialectlabs/sdk": "1.x", "@solana/wallet-adapter-base": "0.x" } }, "sha512-SlaJP5W9rhTbbBB+xgZaw3EpoVgslkVAXI1+FEfdEgTt7O0RyVHoBcMJ3JvNo82HIxnJ7D4N6vHkVtMdha6n3Q=="],
+    "@dialectlabs/blockchain-sdk-solana": ["@dialectlabs/blockchain-sdk-solana@2.0.0-beta.4", "", { "dependencies": { "@solana/web3.js": "^1.95.2" }, "peerDependencies": { "@dialectlabs/sdk": "^2.0.0-beta.4", "@solana/wallet-adapter-base": "0.x" } }, "sha512-JapMTOJebDOdELdbx566dF1DHfrFPtfjgdZhcWmrD0iRPEBaV+tQE5rc7uHVPVBiU7SD2d/q8w++aFPFDqC0Dw=="],
 
-    "@dialectlabs/react-sdk": ["@dialectlabs/react-sdk@2.1.1", "", { "dependencies": { "@dialectlabs/sdk": "^1.9.4", "swr": "^2.2.5" }, "peerDependencies": { "react": ">=18" } }, "sha512-JSRwAOg/rkq3JqUAU/s30OzHdeiquxIT0D1lz5oGFF+g+3HcN4J0Xdp62PK3KImvzmtV5uvPUzq3tlE/mYUsmQ=="],
+    "@dialectlabs/react-sdk": ["@dialectlabs/react-sdk@3.0.0-beta.7", "", { "dependencies": { "@dialectlabs/sdk": "2.0.0-beta.7", "swr": "^2.3.4" }, "peerDependencies": { "react": ">=18" } }, "sha512-5DA3X5YGKjHzuyCzTFEU3ReA/csEAFPuEU8Kg4PgqYO5UUzco1j6bYExC6Wbqx6PPyGXEp7AdXPx6JxV7F6Zig=="],
 
-    "@dialectlabs/react-sdk-blockchain-solana": ["@dialectlabs/react-sdk-blockchain-solana@2.1.1", "", { "dependencies": { "@dialectlabs/blockchain-sdk-solana": "^1.2.1", "@dialectlabs/react-sdk": "^2.1.0", "@solana/web3.js": "^1.95.2" } }, "sha512-U247ymGF+GhqGY1z+De5uIUBVDMH+KhY29Zi0jrR444N7sRGqVCCogRPioKyj148Ti3l4ujj+VZh2upd/Y3OzA=="],
+    "@dialectlabs/react-sdk-blockchain-solana": ["@dialectlabs/react-sdk-blockchain-solana@3.0.0-beta.7", "", { "dependencies": { "@dialectlabs/blockchain-sdk-solana": "2.0.0-beta.4", "@dialectlabs/react-sdk": "3.0.0-beta.7", "@solana/web3.js": "^1.95.2" } }, "sha512-suUOCt9qbHMcrM8YCAx5sqSgTfmAVzCoZuQSZV00fQwlsoVSRXzTzQs7G13pWg2y9W4swnlDoDSIQllfmofxaA=="],
 
-    "@dialectlabs/react-ui": ["@dialectlabs/react-ui@2.2.0", "", { "dependencies": { "@dialectlabs/react-sdk": "^2.1.0", "clsx": "^2.1.0", "react-linkify-it": "^1.0.8" }, "peerDependencies": { "@solana/wallet-adapter-react": "0.15.x", "react": ">=18" } }, "sha512-8mO4bekkeXBwCsJN7ySP3zqTpekEEHTBJ1E6W6XwUx25ZxpzwuMEkarqaMMOSY62XpGxzENqRfZq/2PkPNFeWw=="],
+    "@dialectlabs/react-ui": ["@dialectlabs/react-ui@3.0.0-beta.7", "", { "dependencies": { "@dialectlabs/react-sdk": "3.0.0-beta.7", "clsx": "^2.1.0", "react-linkify-it": "^1.0.8" }, "peerDependencies": { "@solana/wallet-adapter-react": "0.15.x", "react": ">=18" } }, "sha512-PmafbKKVlX86RuaQpxD4ortzJbuxUtDjarHCeqJVIxlOdy+BZZKQd57cQ37rm6wWpnRlxutQ3LiVviovXFLywA=="],
 
-    "@dialectlabs/sdk": ["@dialectlabs/sdk@1.9.5", "", { "dependencies": { "@stablelib/base64": "^1.0.1", "axios": "^0.27.2", "bs58": "^5.0.0", "ed2curve": "^0.3.0", "js-sha3": "^0.8.0", "nanoid": "^3.3.4", "tweetnacl": "^1.0.3" } }, "sha512-5aNpqA40cfzgoY1JrOmqq/ogDnDt3gk+pbhb/SAfw4glEoFNqmrwTlinyo+cRQxcdAzYl32Fb9EkCvh/J2HAYA=="],
+    "@dialectlabs/sdk": ["@dialectlabs/sdk@2.0.0-beta.7", "", { "dependencies": { "@stablelib/base64": "^1.0.1", "axios": "^0.27.2", "bs58": "^5.0.0", "ed2curve": "^0.3.0", "js-sha3": "^0.8.0", "nanoid": "^3.3.4", "tweetnacl": "^1.0.3" } }, "sha512-4m2Uh0nt3MYOZ0mQZB/Y37JibRI/p1EVfBH41fzZrFPEHKVOsII9y/5cJ+hVZFSinNnfsJIwITW4N1fbUzYLSw=="],
 
     "@emurgo/cardano-serialization-lib-browser": ["@emurgo/cardano-serialization-lib-browser@13.2.1", "", {}, "sha512-7RfX1gI16Vj2DgCp/ZoXqyLAakWo6+X95ku/rYGbVzuS/1etrlSiJmdbmdm+eYmszMlGQjrtOJQeVLXoj4L/Ag=="],
 
@@ -2551,9 +2551,7 @@
 
     "@babel/traverse--for-generate-function-map/globals": ["globals@11.12.0", "", {}, "sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA=="],
 
-    "@dialectlabs/blockchain-sdk-solana/@solana/web3.js": ["@solana/web3.js@1.98.0", "", { "dependencies": { "@babel/runtime": "^7.25.0", "@noble/curves": "^1.4.2", "@noble/hashes": "^1.4.0", "@solana/buffer-layout": "^4.0.1", "agentkeepalive": "^4.5.0", "bigint-buffer": "^1.1.5", "bn.js": "^5.2.1", "borsh": "^0.7.0", "bs58": "^4.0.1", "buffer": "6.0.3", "fast-stable-stringify": "^1.0.0", "jayson": "^4.1.1", "node-fetch": "^2.7.0", "rpc-websockets": "^9.0.2", "superstruct": "^2.0.2" } }, "sha512-nz3Q5OeyGFpFCR+erX2f6JPt3sKhzhYcSycBCSPkWjzSVDh/Rr1FqTVMRe58FKO16/ivTUcuJjeS5MyBvpkbzA=="],
-
-    "@dialectlabs/react-sdk-blockchain-solana/@solana/web3.js": ["@solana/web3.js@1.98.0", "", { "dependencies": { "@babel/runtime": "^7.25.0", "@noble/curves": "^1.4.2", "@noble/hashes": "^1.4.0", "@solana/buffer-layout": "^4.0.1", "agentkeepalive": "^4.5.0", "bigint-buffer": "^1.1.5", "bn.js": "^5.2.1", "borsh": "^0.7.0", "bs58": "^4.0.1", "buffer": "6.0.3", "fast-stable-stringify": "^1.0.0", "jayson": "^4.1.1", "node-fetch": "^2.7.0", "rpc-websockets": "^9.0.2", "superstruct": "^2.0.2" } }, "sha512-nz3Q5OeyGFpFCR+erX2f6JPt3sKhzhYcSycBCSPkWjzSVDh/Rr1FqTVMRe58FKO16/ivTUcuJjeS5MyBvpkbzA=="],
+    "@dialectlabs/react-sdk/swr": ["swr@2.3.6", "", { "dependencies": { "dequal": "^2.0.3", "use-sync-external-store": "^1.4.0" }, "peerDependencies": { "react": "^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0" } }, "sha512-wfHRmHWk/isGNMwlLGlZX5Gzz/uTgo0o2IRuTMcf4CPuPFJZlq0rDaKUx+ozB5nBOReNV1kiOyzMfj+MBMikLw=="],
 
     "@dialectlabs/sdk/bs58": ["bs58@5.0.0", "", { "dependencies": { "base-x": "^4.0.0" } }, "sha512-r+ihvQJvahgYT50JD05dyJNKlmmSlMoOGwn1lCcEzanPglg7TxYjioQUYehQ9mAR/+hOSd2jRc/Z2y5UxBymvQ=="],
 
@@ -3008,10 +3006,6 @@
     "xrpl/eventemitter3": ["eventemitter3@5.0.1", "", {}, "sha512-GWkBvjiSZK87ELrYOSESUYeVIc9mvLLf/nXalMOS5dYrgZq9o5OVkbZAVM06CVxYsCwH9BDZFPlQTlPA1j4ahA=="],
 
     "yargs/string-width": ["string-width@4.2.3", "", { "dependencies": { "emoji-regex": "^8.0.0", "is-fullwidth-code-point": "^3.0.0", "strip-ansi": "^6.0.1" } }, "sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g=="],
-
-    "@dialectlabs/blockchain-sdk-solana/@solana/web3.js/superstruct": ["superstruct@2.0.2", "", {}, "sha512-uV+TFRZdXsqXTL2pRvujROjdZQ4RAlBUS5BTh9IGm+jTqQntYThciG/qu57Gs69yjnVUSqdxF9YLmSnpupBW9A=="],
-
-    "@dialectlabs/react-sdk-blockchain-solana/@solana/web3.js/superstruct": ["superstruct@2.0.2", "", {}, "sha512-uV+TFRZdXsqXTL2pRvujROjdZQ4RAlBUS5BTh9IGm+jTqQntYThciG/qu57Gs69yjnVUSqdxF9YLmSnpupBW9A=="],
 
     "@dialectlabs/sdk/bs58/base-x": ["base-x@4.0.0", "", {}, "sha512-FuwxlW4H5kh37X/oW59pwTzzTKRzfrrQwhmyspRM7swOEZcHtDZSCt45U6oKgtuFE+WYPblePMVIPR4RZrh/hw=="],
 
