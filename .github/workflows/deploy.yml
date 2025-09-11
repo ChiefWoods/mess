@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
@@ -40,7 +40,7 @@ jobs:
           git push --force origin `git subtree split --prefix app/dist HEAD`:refs/heads/gh-pages
 
       - name: Cache Bun dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.bun
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
