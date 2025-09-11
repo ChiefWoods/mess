@@ -1,0 +1,8 @@
+[program]
+name = "mess"
+version = "0.1.0"
+program_id = "MESS6sYCuTxwEZsF8M6zrkBdUd4oNvqWCdyBTx6KFNo"
+network = "devnet"
+description = "Open-room messaging dApp"
+repository = "https://github.com/ChiefWoods/mess"
+authority_keypair = "mess-wallet.json"
