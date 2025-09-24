@@ -1,8 +1,8 @@
-import Chat from './components/chat';
-import ChatProvider from './components/chat-provider';
-import Header from './components/header';
-import SolanaProvider from './components/solana-provider';
-import ThemeProvider, { useTheme } from './components/theme-provider';
+import { Chat } from './components/chat';
+import { ChatProvider } from './components/chat-provider';
+import { Header } from './components/header';
+import { SolanaProvider } from './components/solana-provider';
+import { ThemeProvider, useTheme } from './components/theme-provider';
 import { Toaster } from './components/ui';
 import { SWRConfig } from 'swr';
 

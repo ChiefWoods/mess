@@ -27,7 +27,7 @@ export function useChat() {
   return useContext(ChatContext);
 }
 
-export default function ChatProvider({ children }: { children: ReactNode }) {
+export function ChatProvider({ children }: { children: ReactNode }) {
   const { publicKey } = useWallet();
   const { fetchChatAcc, getChatSubscription } = useAnchorProgram();
   const [chatPda, setChatPda] = useState<PublicKey | null>(null);

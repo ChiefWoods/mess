@@ -35,7 +35,7 @@ import Spinner from './spinner';
 import { useChat } from './chat-provider';
 import { notifyChatOwner } from '@/lib/dialect';
 
-export default function Chat() {
+export function Chat() {
   const { publicKey, connecting, connected, sendTransaction } = useWallet();
   const { connection } = useConnection();
   const { getInitIx, getSendIx } = useAnchorProgram();
@@ -114,7 +114,11 @@ export default function Chat() {
         messageForm.setFocus('message');
 
         if (!publicKey.equals(chatAcc.authority)) {
-          notifyChatOwner(publicKey.toBase58(), message, chatAcc.authority.toBase58());
+          notifyChatOwner(
+            publicKey.toBase58(),
+            message,
+            chatAcc.authority.toBase58()
+          );
         }
       } catch (err) {
         const error = err as Error;

@@ -14,7 +14,7 @@ import ModeToggle from './mode-toggle';
 import { useChat } from './chat-provider';
 import { DialectNotificationComponent } from './dialect-notification-component';
 
-export default function Header() {
+export function Header() {
   const { publicKey, connected } = useWallet();
   const { setChatPda } = useChat();
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 640);
