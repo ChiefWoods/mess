@@ -1,39 +1,25 @@
 import { Mess } from '@/types/mess';
 import { AnchorProvider, Program } from '@coral-xyz/anchor';
-import {
-  AnchorWallet,
-  useConnection,
-  useWallet,
-} from '@solana/wallet-adapter-react';
-import { useCallback, useMemo, useState } from 'react';
+import { AnchorWallet, useConnection } from '@solana/wallet-adapter-react';
+import { useCallback, useMemo } from 'react';
 import idl from '@/idl/mess.json';
 import { PublicKey, TransactionInstruction } from '@solana/web3.js';
 import { Chat } from '@/types/accounts';
 
 export function useAnchorProgram() {
   const { connection } = useConnection();
-  const wallet = useWallet();
-  const [program, setProgram] = useState<Program<Mess>>(
-    new Program(
-      idl as Mess,
-      new AnchorProvider(connection, wallet as AnchorWallet, {
+  const program = useMemo(() => {
+    return new Program<Mess>(
+      idl,
+      new AnchorProvider(connection, {} as AnchorWallet, {
         commitment: 'confirmed',
       })
-    )
-  );
-
-  useMemo(() => {
-    setProgram(
-      new Program(
-        idl as Mess,
-        new AnchorProvider(connection, wallet as AnchorWallet, {
-          commitment: 'confirmed',
-        })
-      )
     );
-  }, [connection, wallet]);
+  }, [connection]);
 
-  async function getInitIx(authority: PublicKey): Promise<TransactionInstruction> {
+  async function getInitIx(
+    authority: PublicKey
+  ): Promise<TransactionInstruction> {
     return await program.methods
       .init()
       .accounts({
