@@ -12,8 +12,9 @@ import {
   VersionedTransaction,
 } from '@solana/web3.js';
 
-export async function buildTx(ixs: TransactionInstruction[], payer: PublicKey) {
-  const altPubkey = import.meta.env.VITE_ADDRESS_LOOKUP_TABLE;
+const altPubkey = import.meta.env.VITE_ADDRESS_LOOKUP_TABLE;
+
+export async function getLookupTable(): Promise<AddressLookupTableAccount[]> {
   const alt: AddressLookupTableAccount[] = [];
 
   if (altPubkey) {
@@ -25,6 +26,12 @@ export async function buildTx(ixs: TransactionInstruction[], payer: PublicKey) {
       alt.push(value);
     }
   }
+
+  return alt;
+}
+
+export async function buildTx(ixs: TransactionInstruction[], payer: PublicKey) {
+  const alt = await getLookupTable();
 
   const units = await getSimulationComputeUnits(connection, ixs, payer, alt);
 
