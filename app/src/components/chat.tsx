@@ -26,7 +26,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { TooltipTrigger } from '@radix-ui/react-tooltip';
 import { toast } from 'sonner';
-import { buildTx, getTransactionLink } from '@/lib/helpers';
+import { getTransactionLink } from '@/lib/helpers';
 import { confirmTransaction } from '@solana-developers/helpers';
 import { useAnchorProgram } from '@/hooks/useAnchorProgram';
 import TransactionToast from './transaction-toast';
@@ -34,6 +34,7 @@ import Text from './text';
 import Spinner from './spinner';
 import { useChat } from './chat-provider';
 import { notifyChatOwner } from '@/lib/dialect';
+import { Transaction } from '@solana/web3.js';
 
 export function Chat() {
   const { publicKey, connecting, connected, sendTransaction } = useWallet();
@@ -66,7 +67,7 @@ export function Chat() {
         async () => {
           setIsFormDisabled(true);
 
-          const tx = await buildTx([await getInitIx(publicKey)], publicKey);
+          const tx = new Transaction().add(await getInitIx(publicKey));
 
           const signature = await sendTransaction(tx, connection);
 
@@ -100,9 +101,8 @@ export function Chat() {
       const message = values.message.trim();
 
       try {
-        const tx = await buildTx(
-          [await getSendIx(message, chatPda, publicKey)],
-          publicKey
+        const tx = new Transaction().add(
+          await getSendIx(message, chatPda, publicKey)
         );
 
         const signature = await sendTransaction(tx, connection);
@@ -213,7 +213,7 @@ export function Chat() {
           ) : chatPda && chatAcc ? (
             <>
               <div className="flex w-full items-center gap-x-2">
-                <h2 className="text-2xl font-semibold text-primary sm:text-3xl">
+                <h2 className="text-primary text-2xl font-semibold sm:text-3xl">
                   Chatroom : {truncateAddress(chatPda.toBase58())}
                 </h2>
                 <Button
@@ -246,10 +246,10 @@ export function Chat() {
                     return (
                       <div
                         key={i}
-                        className={`flex w-fit max-w-[200px] flex-col gap-y-2 break-words rounded-lg bg-primary-foreground p-2 sm:max-w-[400px] ${
+                        className={`bg-primary-foreground flex w-fit max-w-[200px] flex-col gap-y-2 rounded-lg p-2 break-words sm:max-w-[400px] ${
                           isSelf
-                            ? 'mr-4 items-end self-end rounded-br-none bg-accent text-primary'
-                            : 'items-start self-start rounded-bl-none bg-primary-foreground text-primary'
+                            ? 'bg-accent text-primary mr-4 items-end self-end rounded-br-none'
+                            : 'bg-primary-foreground text-primary items-start self-start rounded-bl-none'
                         }`}
                       >
                         {texts.map((text, j) => (
