@@ -18,21 +18,6 @@ Messaging dApp for Solana Curriculum in [freeCodeCampWeb3](https://web3.freecode
 - [![TypeScript](https://img.shields.io/badge/TypeScript-ffffff?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 - [![React](https://img.shields.io/badge/React-23272f?style=for-the-badge&logo=react)](https://react.dev/)
 
-### Libraries
-
-- [@solana/web3.js](https://solana-foundation.github.io/solana-web3.js/)
-- [litesvm](https://github.com/LiteSVM/litesvm/tree/master/crates/node-litesvm)
-- [anchor-litesvm](https://github.com/LiteSVM/anchor-litesvm/)
-- [@solana/wallet-adapter-react](https://github.com/anza-xyz/wallet-adapter)
-- [@dialectlabs/sdk](https://www.dialect.to/)
-- [@coral-xyz/anchor](https://www.anchor-lang.com/)
-- [shadcn/ui](https://ui.shadcn.com/)
-- [Zod](https://zod.dev/)
-
-### Crates
-
-- [anchor-lang](https://docs.rs/anchor-lang/latest/anchor_lang/)
-
 ### Runtime and Test Runner
 
 - [![Bun](https://img.shields.io/badge/Bun-000?style=for-the-badge&logo=bun)](https://bun.sh/)
@@ -100,7 +85,7 @@ anchor deploy
 3. Optionally initialize IDL
 
 ```bash
-anchor idl init -f target/idl/stablecoin.json <PROGRAM_ID>
+anchor idl init -f target/idl/mess.json <PROGRAM_ID>
 ```
 
 4. In the `app` directory, set up `.env` values
@@ -114,6 +99,28 @@ cp .env.example .env.development
 ```bash
 bun run dev
 ```
+
+## Using LazorKit
+
+[LazorKit](https://lazorkit.com/) is a passkey-based smart wallet with gas abstraction built in.
+
+Setting up your smart wallet:
+
+Choose LazorKit when selected a wallet to connect with.
+
+![Connect Wallet](./guide/connect_wallet.png)
+
+Create a new account or sign in if you've registered your passkey on another device.
+
+![Portal](./guide/portal.png)
+
+Authenticate using your passkey.
+
+![Sign In](./guide/sign_in.png)
+
+You should now be connected to your smart wallet, without needing to enter any password or store any secret keys.
+
+![Connected](./guide/connected.png)
 
 ## Issues
 
@@ -130,6 +137,7 @@ View the [open issues](https://github.com/ChiefWoods/mess/issues) for a full lis
 - [GitHub Pages](https://pages.github.com/)
 - [Helius](https://www.helius.dev/)
 - [Dialect](https://www.dialect.to/)
+- [LazorKit](https://lazorkit.com/)
 
 ## Contact
 
