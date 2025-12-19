@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { MessageGroup } from '@/types/message';
-import { truncateAddress } from '@/lib/utils';
+import { cn, truncateAddress } from '@/lib/utils';
 import { z } from 'zod';
 import { messageFormSchema } from '@/lib/schemas';
 import { useForm } from 'react-hook-form';
@@ -246,11 +246,12 @@ export function Chat() {
                     return (
                       <div
                         key={i}
-                        className={`bg-primary-foreground flex w-fit max-w-[200px] flex-col gap-y-2 rounded-lg p-2 break-words sm:max-w-[400px] ${
+                        className={cn(
+                          'bg-primary-foreground flex w-fit max-w-[200px] flex-col gap-y-2 rounded-lg p-2 wrap-break-word sm:max-w-[400px]',
                           isSelf
-                            ? 'bg-accent text-primary mr-4 items-end self-end rounded-br-none'
-                            : 'bg-primary-foreground text-primary items-start self-start rounded-bl-none'
-                        }`}
+                            ? 'mr-4 items-end self-end rounded-br-none'
+                            : 'mr-auto ml-4 items-start self-start rounded-bl-none'
+                        )}
                       >
                         {texts.map((text, j) => (
                           <p key={j} className="max-w-full">
