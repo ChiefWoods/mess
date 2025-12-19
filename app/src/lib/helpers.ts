@@ -1,7 +1,7 @@
 import {
   getExplorerLink,
   getSimulationComputeUnits,
-} from '@solana-developers/helpers';
+} from './solana-developers-helpers';
 import { connection } from './constants';
 import {
   AddressLookupTableAccount,

@@ -27,7 +27,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { TooltipTrigger } from '@radix-ui/react-tooltip';
 import { toast } from 'sonner';
 import { getTransactionLink } from '@/lib/helpers';
-import { confirmTransaction } from '@solana-developers/helpers';
 import { useAnchorProgram } from '@/hooks/useAnchorProgram';
 import TransactionToast from './transaction-toast';
 import Text from './text';
@@ -71,7 +70,9 @@ export function Chat() {
 
           const signature = await sendTransaction(tx, connection);
 
-          return await confirmTransaction(connection, signature);
+          await connection.confirmTransaction(signature, 'confirmed');
+
+          return signature;
         },
         {
           loading: 'Waiting for signature...',
@@ -107,7 +108,7 @@ export function Chat() {
 
         const signature = await sendTransaction(tx, connection);
 
-        await confirmTransaction(connection, signature);
+        await connection.confirmTransaction(signature, 'confirmed');
 
         mutate();
         messageForm.reset();
