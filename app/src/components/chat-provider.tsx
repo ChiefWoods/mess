@@ -55,7 +55,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
         subscription.unsubscribe();
       };
     }
-  }, [chatPda]);
+  }, [chatPda, getChatSubscription, mutate]);
 
   return (
     <ChatContext.Provider
