@@ -70,7 +70,7 @@ export function Header() {
       {!isSearchExpanded && (
         <Button
           variant={'ghost'}
-          className="mr-auto flex items-center gap-x-3 pl-0 text-primary hover:bg-transparent hover:text-primary"
+          className="text-primary hover:text-primary mr-auto flex cursor-pointer items-center gap-x-3 pl-0 hover:bg-transparent"
           onClick={showDefaultChatroom}
         >
           <MessageSquareMore size={32} />
@@ -84,7 +84,7 @@ export function Header() {
               <Button
                 variant={'ghost'}
                 size={'icon'}
-                className="flex gap-x-3 text-primary hover:bg-transparent hover:text-primary"
+                className="text-primary hover:text-primary flex cursor-pointer gap-x-3 hover:bg-transparent"
                 onClick={() => setIsSearchExpanded(false)}
               >
                 <ArrowLeft size={20} />
@@ -95,7 +95,7 @@ export function Header() {
             <Button
               variant={'ghost'}
               size={'icon'}
-              className="flex gap-x-3 text-primary hover:bg-transparent hover:text-primary"
+              className="text-primary hover:text-primary flex cursor-pointer gap-x-3 hover:bg-transparent"
               onClick={() => setIsSearchExpanded(true)}
             >
               <Search />

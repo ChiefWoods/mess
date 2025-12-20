@@ -221,7 +221,7 @@ export function Chat() {
                   variant={'ghost'}
                   size={'icon'}
                   onClick={copyChatPDA}
-                  className="aspect-square bg-transparent hover:bg-transparent"
+                  className="aspect-square cursor-pointer bg-transparent hover:bg-transparent"
                 >
                   {isCopied ? (
                     <CopyCheck
