@@ -28,6 +28,9 @@ jobs:
           VITE_RPC_CLUSTER: ${{ secrets.VITE_RPC_CLUSTER }}
           VITE_ADDRESS_LOOKUP_TABLE: ${{ secrets.VITE_ADDRESS_LOOKUP_TABLE }}
           VITE_MESS_PROGRAM_ID: ${{ secrets.VITE_MESS_PROGRAM_ID }}
+          VITE_LAZORKIT_PORTAL_URL: ${{ secrets.VITE_LAZORKIT_PORTAL_URL }}
+          VITE_LAZORKIT_PAYMASTER_URL: ${{ secrets.VITE_LAZORKIT_PAYMASTER_URL }}
+          VITE_LAZORKIT_API_KEY: ${{ secrets.VITE_LAZORKIT_API_KEY }}
           DIALECT_SDK_CREDENTIALS: ${{ secrets.DIALECT_SDK_CREDENTIALS }}
         run: bun run build
 
